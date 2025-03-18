@@ -1,11 +1,14 @@
 .app {
   font-family: roboto;
-  background: url('../../assets/background-image.jpg') no-repeat center;
-  background-size: cover;
   margin: 0;
   padding: 0;
 }
 
 .app_content {
   margin: 0;
+}
+
+.app__background-wrapper {
+  background: url('../../assets/background-image.svg') no-repeat center;
+  background-size: cover;
 }

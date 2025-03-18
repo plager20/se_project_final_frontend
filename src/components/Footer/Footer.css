@@ -1,0 +1,78 @@
+.footer {
+  display: flex;
+  background-color: #ffffff;
+  justify-content: space-between;
+}
+
+.footer__credits {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 32px 0 26px 104px;
+  color: #b6bcbf;
+}
+
+.footer__links {
+  display: flex;
+  gap: 24px;
+  padding: 30px 104px 26px 0;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.footer__home {
+  border: none;
+  background-color: #ffffff;
+  width: 49px;
+  height: 24px;
+  padding: 0;
+}
+
+.footer__home:hover {
+  cursor: pointer;
+}
+
+.footer__tripleten {
+  border: none;
+  background-color: #ffffff;
+  width: 74px;
+  height: 24px;
+  padding: 0;
+}
+
+.footer__tripleten:hover {
+  cursor: pointer;
+}
+
+.footer__git {
+  background-image: url('../../assets/git-icon.svg');
+  background-position: center;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+.footer__git:hover {
+  cursor: pointer;
+}
+
+.footer__socialmedia {
+  background-image: url('../../assets/linkedin-icon.jpg');
+  background-position: center;
+  background-size: contain;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background-color: #ffffff;
+  padding: 0;
+}
+
+.footer__socialmedia:hover {
+  cursor: pointer;
+}

@@ -6,7 +6,9 @@ function Header() {
     <header className='header'>
       <img src={logo_white} alt='' className='header__logo' />
       <div className='header__button-container'>
-        <button className='header__home-button'>Home</button>
+        <button className='header__home-button' id='home'>
+          Home
+        </button>
         <button className='header__signin-button'>Sign In</button>
       </div>
     </header>
