@@ -1,7 +1,7 @@
 import './Header.css';
 import logo_white from '../../assets/logo_white.svg';
 
-function Header() {
+function Header({ handleSignInModal }) {
   return (
     <header className='header'>
       <img src={logo_white} alt='' className='header__logo' />
@@ -9,7 +9,9 @@ function Header() {
         <button className='header__home-button' id='home'>
           Home
         </button>
-        <button className='header__signin-button'>Sign In</button>
+        <button className='header__signin-button' onClick={handleSignInModal}>
+          Sign In
+        </button>
       </div>
     </header>
   );
