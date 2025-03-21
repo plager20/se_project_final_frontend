@@ -1,48 +1,35 @@
 .header {
   display: flex;
-  padding: 19px 104px 0 104px;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 24.8px;
-  text-align: left;
-  justify-content: space-between;
-  align-items: center;
-  color: transparent;
-  border-bottom: 1px solid #ffffff33;
+  flex-direction: column;
+  color: #ffffff;
+  background: url('../../assets/background-image.svg') no-repeat center;
+  background-size: cover;
 }
 
-.header__logo {
-  width: 200px;
-  height: 24px;
-  padding: 0 0 12px 0;
-}
-
-.header__button-container {
+.header__text {
   display: flex;
-  gap: 42px;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.header__home-button {
-  color: #ffffff;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 11px 0 22px 0;
-  border-bottom: 3px solid #ffffff;
+.header__title {
+  font-family: roboto slab;
+  font-weight: 400;
+  font-size: 60px;
+  max-width: 608px;
+  text-wrap: wrap;
+  margin: 0;
+  padding: 80px 0 0 0;
+  max-height: 128px;
 }
 
-.header__home-button:hover {
-  border-color: transparent;
-}
-
-.header__signin-button {
-  width: 176px;
-  height: 48px;
-  color: #ffffff;
-  background-color: transparent;
-  border: 1px solid #ffffff;
-  border-radius: 100px;
-  cursor: pointer;
-  margin: 0 0 12px 0;
+.header__subtext {
+  margin: 0;
+  padding: 32px 0 88px 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  width: 608px;
 }

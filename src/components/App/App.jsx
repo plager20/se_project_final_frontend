@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import Header from '../Header/Header';
-import SearchForm from '../SearchForm/SearchForm';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
 import SignInModal from '../SignInModal/SignInModal';
@@ -25,10 +24,7 @@ function App() {
   return (
     <div className='app'>
       <div className='app_content'>
-        <div className='app__background-wrapper'>
-          <Header handleSignInModal={handleSignInModal}></Header>
-          <SearchForm></SearchForm>
-        </div>
+        <Header handleSignInModal={handleSignInModal}></Header>
         <About></About>
         <Footer></Footer>
       </div>

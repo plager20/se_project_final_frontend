@@ -7,8 +7,3 @@
 .app_content {
   margin: 0;
 }
-
-.app__background-wrapper {
-  background: url('../../assets/background-image.svg') no-repeat center;
-  background-size: cover;
-}
