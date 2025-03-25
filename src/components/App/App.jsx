@@ -5,6 +5,7 @@ import About from '../About/About';
 import Footer from '../Footer/Footer';
 import SignInModal from '../SignInModal/SignInModal';
 import SignUpModal from '../SignUpModal/SignUpModal';
+import RegistrationConfirmationModal from '../RegistrationConfirmationModal/RegistrationConfirmationModal';
 
 function App() {
   const [activeModal, setActiveModal] = useState('');
@@ -15,6 +16,11 @@ function App() {
 
   const handleSignUpModal = () => {
     setActiveModal('signup');
+  };
+
+  const handleRegistrationConfirmationModal = () => {
+    console.log('opening');
+    setActiveModal('registrationconfirmation');
   };
 
   const closeActiveModal = () => {
@@ -36,6 +42,14 @@ function App() {
       <SignUpModal
         closeActiveModal={closeActiveModal}
         isOpen={activeModal === 'signup'}
+        handleSignInModal={handleSignInModal}
+        handleRegistrationConfirmationModal={
+          handleRegistrationConfirmationModal
+        }
+      />
+      <RegistrationConfirmationModal
+        activeModal={activeModal}
+        closeActiveModal={closeActiveModal}
         handleSignInModal={handleSignInModal}
       />
     </div>

@@ -1,0 +1,64 @@
+.RegistrationConfirmationModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: visibility 0s ease-in-out 0.5s, opacity 0.5s ease-in-out;
+}
+
+.RegistrationConfirmationModal_opened {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.RegistrationConfirmationModal__content {
+  position: relative;
+  max-width: 430px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 46px 79px 51px 36px;
+}
+
+.RegistrationConfirmationModal__close {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: -40px;
+  right: -42px;
+  background-image: url(../../assets/close_btn.svg);
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+
+.RegistrationConfirmationModal__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  margin: 0;
+  padding: 0 0 14px 0;
+  max-width: 315px;
+}
+
+.RegistrationConfirmationModal__signin-button {
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 18px;
+  color: #2f71e5;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  height: 18px;
+}

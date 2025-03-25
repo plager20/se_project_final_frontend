@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
-function SignUpModal({ isOpen, closeActiveModal, handleSignInModal }) {
+function SignUpModal({
+  isOpen,
+  closeActiveModal,
+  handleSignInModal,
+  handleRegistrationConfirmationModal,
+}) {
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -44,7 +49,7 @@ function SignUpModal({ isOpen, closeActiveModal, handleSignInModal }) {
           id='signup-email'
           placeholder='Enter email'
           minLength='1'
-          value={data.email}
+          value={email}
           onChange={handleEmailChange}
           required
         />
@@ -58,7 +63,7 @@ function SignUpModal({ isOpen, closeActiveModal, handleSignInModal }) {
           id='signup-password'
           placeholder='Enter Password'
           minLength='1'
-          value={data.password}
+          value={password}
           onChange={handlePasswordChange}
           required
         />
@@ -79,7 +84,11 @@ function SignUpModal({ isOpen, closeActiveModal, handleSignInModal }) {
         />
       </label>
 
-      <button type='submit' className='modal__submit'>
+      <button
+        type='submit'
+        className='modal__submit'
+        onClick={handleRegistrationConfirmationModal}
+      >
         Sign up
       </button>
       <div className='login_button-container'>
