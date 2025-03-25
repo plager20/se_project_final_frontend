@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 import SignInModal from '../SignInModal/SignInModal';
 import SignUpModal from '../SignUpModal/SignUpModal';
 import RegistrationConfirmationModal from '../RegistrationConfirmationModal/RegistrationConfirmationModal';
+import Main from '../Main/Main';
 
 function App() {
   const [activeModal, setActiveModal] = useState('');
@@ -30,9 +31,10 @@ function App() {
   return (
     <div className='app'>
       <div className='app_content'>
-        <Header handleSignInModal={handleSignInModal}></Header>
-        <About></About>
-        <Footer></Footer>
+        <Header handleSignInModal={handleSignInModal} />
+        <Main />
+        <About />
+        <Footer />
       </div>
       <SignInModal
         closeActiveModal={closeActiveModal}

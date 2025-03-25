@@ -6,7 +6,7 @@ function Navigation({ handleSignInModal }) {
     <div className='navigation'>
       <img src={logo_white} alt='' className='navigation__logo' />
       <div className='navigation__button-container'>
-        <button className='navigation__home-button' id='home'>
+        <button className='navigation__home-button' id='/'>
           Home
         </button>
         <button
