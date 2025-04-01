@@ -1,9 +1,12 @@
 import './Main.css';
 import NewsCardList from '../NewsCardList/NewsCardList';
+import About from '../About/About';
+import Header from '../Header/Header';
 
-function Main() {
+function Main({ handleSignInModal, isLoggedIn }) {
   return (
     <main>
+      <Header handleSignInModal={handleSignInModal} isLoggedin={isLoggedIn} />
       <section className='newscards'>
         <p className='newscards__text'>Search Results</p>
         <NewsCardList />
@@ -11,6 +14,7 @@ function Main() {
           <button className='newscards__show-more'>Show more</button>
         </div>
       </section>
+      <About />
     </main>
   );
 }

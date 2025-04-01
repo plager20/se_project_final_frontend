@@ -5,31 +5,25 @@ function SignUpModal({
   isOpen,
   closeActiveModal,
   handleSignInModal,
-  handleRegistrationConfirmationModal,
+  handleRegistration,
 }) {
   const [data, setData] = useState({
     email: '',
     password: '',
+    username: '',
   });
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log(e.target.value);
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const resetForm = () => {
-    setEmail(''), setPassword(''), setUsername('');
+    setData('');
   };
 
   useEffect(() => {
@@ -38,19 +32,29 @@ function SignUpModal({
     }
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleRegistration(data);
+  };
+
   return (
-    <ModalWithForm title='Sign up' isOpen={isOpen} onClose={closeActiveModal}>
+    <ModalWithForm
+      title='Sign up'
+      isOpen={isOpen}
+      onClose={closeActiveModal}
+      onSubmit={handleSubmit}
+    >
       <label htmlFor='signup-email' className='modal__label'>
         Email
         <input
           type='email'
           className='modal__input'
-          name='signup-email'
+          name='email'
           id='signup-email'
           placeholder='Enter email'
           minLength='1'
-          value={email}
-          onChange={handleEmailChange}
+          value={data.email}
+          onChange={handleChange}
           required
         />
       </label>
@@ -59,12 +63,12 @@ function SignUpModal({
         <input
           type='password'
           className='modal__input'
-          name='signup-password'
+          name='password'
           id='signup-password'
           placeholder='Enter Password'
           minLength='1'
-          value={password}
-          onChange={handlePasswordChange}
+          value={data.password}
+          onChange={handleChange}
           required
         />
       </label>
@@ -78,17 +82,13 @@ function SignUpModal({
           placeholder='Enter your username'
           minLength='1'
           maxLength='30'
-          value={username}
-          onChange={handleUsernameChange}
+          value={data.username}
+          onChange={handleChange}
           required
         />
       </label>
 
-      <button
-        type='submit'
-        className='modal__submit'
-        onClick={handleRegistrationConfirmationModal}
-      >
+      <button type='submit' className='modal__submit' onSubmit={handleSubmit}>
         Sign up
       </button>
       <div className='login_button-container'>
