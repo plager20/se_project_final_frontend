@@ -1,10 +1,14 @@
 import { useLocation } from 'react-router';
 
 import './Navigation.css';
+import logout from '../../assets/logout.svg';
+import logoutBlack from '../../assets/logout-black.svg';
 
 function Navigation({ handleSignInModal, isLoggedin }) {
   const location = useLocation();
   const isSavedNews = location.pathname === '/saved-news';
+
+  console.log(isSavedNews);
 
   return (
     <div
@@ -25,6 +29,21 @@ function Navigation({ handleSignInModal, isLoggedin }) {
             onClick={handleSignInModal}
           >
             Sign In
+          </button>
+        )}
+        {isLoggedin && (
+          <a href='/saved-news'>
+            <button className='navigation__savednews'>Saved articles</button>
+          </a>
+        )}
+        {isLoggedin && (
+          <button className='navigation__signout'>
+            Elise
+            <img
+              className='navigation__logout'
+              src={isSavedNews ? logoutBlack : logout}
+              alt='logout symbol'
+            />
           </button>
         )}
       </div>

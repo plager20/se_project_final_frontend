@@ -14,7 +14,7 @@ import { register } from '../../utils/auth';
 function App() {
   //useStates
   const [activeModal, setActiveModal] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   //Modal Functions
   const handleSignInModal = () => {
