@@ -8,8 +8,6 @@ function Navigation({ handleSignInModal, isLoggedin }) {
   const location = useLocation();
   const isSavedNews = location.pathname === '/saved-news';
 
-  console.log(isSavedNews);
-
   return (
     <div
       className={`navigation ${isSavedNews ? 'navigation__saved-news' : ''}`}

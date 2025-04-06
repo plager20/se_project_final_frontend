@@ -13,4 +13,17 @@ const register = (username, password, email) => {
   });
 };
 
-export { BASE_URL, register };
+const login = (email, email) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: 'POST',
+    headers: {
+      Accept: 'applications/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
+};
+
+export { register, login };

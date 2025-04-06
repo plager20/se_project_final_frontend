@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import './App.css';
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import SignInModal from '../SignInModal/SignInModal';
 import SignUpModal from '../SignUpModal/SignUpModal';
@@ -41,6 +40,12 @@ function App() {
       .then(() => {
         handleRegistrationConfirmationModal();
       })
+      .catch(console.error);
+  };
+
+  const handleLogIn = ({ email, password }) => {
+    login(email, password)
+      .then(() => {})
       .catch(console.error);
   };
 

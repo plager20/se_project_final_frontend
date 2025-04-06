@@ -1,6 +1,9 @@
 import './ModalWithForm.css';
 
+import useEscape from '../../hooks/useEscape';
+
 function ModalWithForm({ children, title, onClose, isOpen, onSubmit }) {
+  useEscape(onClose);
   return (
     <div className={`modal ${isOpen ? 'modal_opened' : ''}`}>
       <div className='modal__content'>
