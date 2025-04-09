@@ -3,10 +3,13 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
 import Header from '../Header/Header';
 
-function Main({ handleSignInModal, isLoggedIn }) {
+function Main({ handleSignInModal, handleLogOut }) {
   return (
     <main>
-      <Header handleSignInModal={handleSignInModal} isLoggedin={isLoggedIn} />
+      <Header
+        handleSignInModal={handleSignInModal}
+        handleLogOut={handleLogOut}
+      />
       <section className='newscards'>
         <p className='newscards__text'>Search Results</p>
         <NewsCardList />

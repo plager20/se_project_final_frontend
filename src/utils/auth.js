@@ -1,29 +1,21 @@
-const BASE_URL = 'localhost:5173';
-
-const register = (username, password, email) => {
-  return fetch(`${BASE_URL}/signup`, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ username, password, email }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+const register = async () => {
+  return new Promise((resolve, reject) => {
+    resolve({ message: 'User successfully registered' });
   });
 };
 
-const login = (email, email) => {
-  return fetch(`${BASE_URL}/signin`, {
-    method: 'POST',
-    headers: {
-      Accept: 'applications/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ email, password }),
-  }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+const login = async () => {
+  return new Promise((resolve, reject) => {
+    resolve({ token: 'a fake token' });
   });
 };
 
-export { register, login };
+const checkToken = async (token) => {
+  return new Promise((resolve, reject) => {
+    resolve({
+      data: { name: 'Gerald', email: 'fake@example.com', _id: 'fake-id' },
+    });
+  });
+};
+
+export { register, login, checkToken };

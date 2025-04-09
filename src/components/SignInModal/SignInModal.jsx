@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import ModalWithForm from '../ModalWithForm/ModalWithForm';
 
-function SignInModal({ isOpen, closeActiveModal, handleSignUpModal }) {
+function SignInModal({
+  isOpen,
+  closeActiveModal,
+  handleLogIn,
+  handleSignUpModal,
+}) {
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -16,6 +21,12 @@ function SignInModal({ isOpen, closeActiveModal, handleSignUpModal }) {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleLogIn({ email: data.email, password: data.password });
+    closeActiveModal();
+  };
+
   const resetForm = () => {
     setData('');
   };
@@ -27,7 +38,12 @@ function SignInModal({ isOpen, closeActiveModal, handleSignUpModal }) {
   });
 
   return (
-    <ModalWithForm title='Sign in' isOpen={isOpen} onClose={closeActiveModal}>
+    <ModalWithForm
+      title='Sign in'
+      onSubmit={handleSubmit}
+      isOpen={isOpen}
+      onClose={closeActiveModal}
+    >
       <label htmlFor='signin-email' className='modal__label'>
         Email
         <input

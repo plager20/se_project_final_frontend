@@ -2,12 +2,13 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 
-function Header({ handleSignInModal, isLoggedIn }) {
+function Header({ handleSignInModal, isLoggedIn, handleLogOut }) {
   return (
     <header className='header'>
       <Navigation
         handleSignInModal={handleSignInModal}
         isLoggedin={isLoggedIn}
+        handleLogOut={handleLogOut}
       />
       <div className='header__text'>
         <h1 className='header__title'>What's going on in the world?</h1>

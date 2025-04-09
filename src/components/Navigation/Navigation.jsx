@@ -1,10 +1,14 @@
 import { useLocation } from 'react-router';
+import { useContext } from 'react';
+import UserContext from '../../context/UserContext';
 
 import './Navigation.css';
 import logout from '../../assets/logout.svg';
 import logoutBlack from '../../assets/logout-black.svg';
 
-function Navigation({ handleSignInModal, isLoggedin }) {
+function Navigation({ handleSignInModal, handleLogOut }) {
+  const { currentUser, isLoggedIn } = useContext(UserContext);
+  console.log(isLoggedIn);
   const location = useLocation();
   const isSavedNews = location.pathname === '/saved-news';
 
@@ -21,7 +25,7 @@ function Navigation({ handleSignInModal, isLoggedin }) {
             Home
           </button>
         </a>
-        {!isLoggedin && (
+        {!isLoggedIn && (
           <button
             className='navigation__signin-button'
             onClick={handleSignInModal}
@@ -29,14 +33,14 @@ function Navigation({ handleSignInModal, isLoggedin }) {
             Sign In
           </button>
         )}
-        {isLoggedin && (
+        {isLoggedIn && (
           <a href='/saved-news'>
             <button className='navigation__savednews'>Saved articles</button>
           </a>
         )}
-        {isLoggedin && (
-          <button className='navigation__signout'>
-            Elise
+        {isLoggedIn && (
+          <button className='navigation__signout' onClick={handleLogOut}>
+            {currentUser.name}
             <img
               className='navigation__logout'
               src={isSavedNews ? logoutBlack : logout}
