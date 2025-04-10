@@ -8,7 +8,6 @@ import logoutBlack from '../../assets/logout-black.svg';
 
 function Navigation({ handleSignInModal, handleLogOut }) {
   const { currentUser, isLoggedIn } = useContext(UserContext);
-  console.log(isLoggedIn);
   const location = useLocation();
   const isSavedNews = location.pathname === '/saved-news';
 

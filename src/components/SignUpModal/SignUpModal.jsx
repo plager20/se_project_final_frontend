@@ -15,7 +15,6 @@ function SignUpModal({
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value);
     setData((prevData) => ({
       ...prevData,
       [name]: value,

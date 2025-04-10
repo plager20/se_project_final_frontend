@@ -19,7 +19,6 @@ function App() {
 
   //Modal Functions
   const handleSignInModal = () => {
-    console.log(isLoggedIn);
     setActiveModal('signin');
   };
 
