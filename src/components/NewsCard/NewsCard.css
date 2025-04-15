@@ -26,6 +26,33 @@
   padding: 0;
 }
 
+.newscard__signin-to-save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 45px;
+  width: 182px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.newscard__save-button:hover .newscard__signin-to-save {
+  visibility: visible;
+}
+
 .newscard__save-button:hover {
   background-image: url('../../assets/save-hover.svg');
 }

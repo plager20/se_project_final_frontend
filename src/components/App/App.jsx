@@ -16,6 +16,7 @@ function App() {
   const [activeModal, setActiveModal] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   //Modal Functions
   const handleSignInModal = () => {
@@ -73,16 +74,23 @@ function App() {
     }
   };
 
+  //NewsApi's
+
+  // useEffects
+  useEffect(() => {
+    handleCheckToken();
+  }, []);
+
   const handleLogOut = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
-    setCurrentUser({});
+    setCurrentUser(null);
   };
 
   return (
     <BrowserRouter>
-      <div className='app'>
-        <UserContext.Provider value={{ currentUser, isLoggedIn }}>
+      <UserContext.Provider value={{ currentUser, isLoggedIn }}>
+        <div className='app'>
           <div className='app_content'>
             <Routes>
               <Route
@@ -115,8 +123,8 @@ function App() {
             closeActiveModal={closeActiveModal}
             handleSignInModal={handleSignInModal}
           />
-        </UserContext.Provider>
-      </div>
+        </div>
+      </UserContext.Provider>
     </BrowserRouter>
   );
 }

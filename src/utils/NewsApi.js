@@ -1,27 +1,17 @@
-const newsApiBaseUrl =
+const BASE_URL =
   process.env.NODE_ENV === 'production'
     ? 'https://nomoreparties.co/news/v2/everything'
     : 'https://newsapi.org/v2/everything';
 
 const apiKey = '020906194a3e429eb3cf16f7baa623e8';
 
-// const request = (url, options) => {
-//   return fetch(url, options).then(checkResponse);
-// };
-
-// function checkResponse(res) {
-//   if (res.ok) {
-//     return res.json();
-//   }
-//   return Promise.reject(`Error: ${res.status}`);
-// }
-const sevenDaysAgo = () => {
+const from = () => {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 7);
   return currentDate.toISOString().split('T')[0];
 };
 
-const today = () => {
+const to = () => {
   return new Date().toISOString().split('T')[0];
 };
 
@@ -30,14 +20,14 @@ const parseNewsData = (newsData) => {
 };
 
 const getNewsArticles = async (keyword) => {
-  const url = `${baseUrl}?q=${encodeURIComponent(
+  const url = `${BASE_URL}?q=${encodeURIComponent(
     keyword
-  )}&apiKey=${apiKey}&from=${get7DaysAgo()}&to=${getToday()}&pageSize=100`;
+  )}&apiKey=${apiKey}&from=${from()}&to=${to()}&pageSize=100`;
 
   try {
-    const articleObject = await request(url); // Resolve the promise
+    const articleObject = await request(url);
     const articles = parseNewsData(articleObject);
-    return articles; // Return the articles array
+    return articles;
   } catch (err) {
     console.log('Error getting news articles:', err);
   }

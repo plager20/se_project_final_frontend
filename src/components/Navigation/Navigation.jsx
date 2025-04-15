@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { useContext } from 'react';
 import UserContext from '../../context/UserContext';
 
@@ -15,15 +15,15 @@ function Navigation({ handleSignInModal, handleLogOut }) {
     <div
       className={`navigation ${isSavedNews ? 'navigation__saved-news' : ''}`}
     >
-      <a href='/'>
+      <Link to='/'>
         <p className='navigation__logo'>NewsExplorer</p>
-      </a>
+      </Link>
       <div className='navigation__button-container'>
-        <a href='/'>
+        <Link to='/'>
           <button className='navigation__home-button' id='/'>
             Home
           </button>
-        </a>
+        </Link>
         {!isLoggedIn && (
           <button
             className='navigation__signin-button'
@@ -33,9 +33,9 @@ function Navigation({ handleSignInModal, handleLogOut }) {
           </button>
         )}
         {isLoggedIn && (
-          <a href='/saved-news'>
+          <Link to='/saved-news'>
             <button className='navigation__savednews'>Saved articles</button>
-          </a>
+          </Link>
         )}
         {isLoggedIn && (
           <button className='navigation__signout' onClick={handleLogOut}>

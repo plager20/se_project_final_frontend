@@ -23,10 +23,10 @@ const articles = [
     isSaved: true,
     title: ' Underdogs No More: Tulsa Hawks Stun League with Championship Win',
     urlToImage: '',
-    keyword: 'Technology',
+    keyword: 'Sports',
     content: 'In a season that began with little hope and fewer headlines...',
     pubDate: '2025-04-08',
-    author: 'John Doe',
+    author: 'Jane Doe',
   },
 ].map((article) => ({ ...article, _id: crypto.randomUUID() }));
 
