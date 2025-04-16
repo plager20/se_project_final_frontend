@@ -5,6 +5,17 @@ const BASE_URL =
 
 const apiKey = '020906194a3e429eb3cf16f7baa623e8';
 
+const request = (url, options) => {
+  return fetch(url, options).then(checkResponse);
+};
+
+const checkResponse = (res) => {
+  if (!res.ok) {
+    return Promise.reject(`Error: ${res.status}`);
+  }
+  return res.json();
+};
+
 const from = () => {
   const currentDate = new Date();
   currentDate.setDate(currentDate.getDate() - 7);
@@ -15,8 +26,8 @@ const to = () => {
   return new Date().toISOString().split('T')[0];
 };
 
-const parseNewsData = (newsData) => {
-  return newsData['articles'];
+const articleData = (articleData) => {
+  return articleData['articles'];
 };
 
 const getNewsArticles = async (keyword) => {
@@ -26,10 +37,10 @@ const getNewsArticles = async (keyword) => {
 
   try {
     const articleObject = await request(url);
-    const articles = parseNewsData(articleObject);
+    const articles = articleData(articleObject);
     return articles;
   } catch (err) {
-    console.log('Error getting news articles:', err);
+    console.log('Error getting articles:', err);
   }
 };
 

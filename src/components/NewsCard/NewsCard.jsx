@@ -1,21 +1,30 @@
-import './NewsCard.css';
-
 import { useContext } from 'react';
+import { useLocation } from 'react-router';
 import UserContext from '../../context/UserContext';
+
+import './NewsCard.css';
 import test from '../../assets/news-article-image.svg';
 
 function NewsCard() {
   const { isLoggedIn } = useContext(UserContext);
+  const isSavedNews = location.pathname === '/saved-news';
 
   return (
     <li className='newscard'>
       <img src={test} alt='News article image' className='newscard__image' />
-
-      <button className='newscard__save-button'>
-        {!isLoggedIn && (
-          <p className='newscard__signin-to-save'>Sign in to save articles</p>
-        )}
-      </button>
+      {isSavedNews && <p className='newscard__keyword'>KEYWORD</p>}
+      {!isSavedNews && (
+        <button className='newscard__save-button'>
+          {!isLoggedIn && (
+            <p className='newscard__signin-to-save'>Sign in to save articles</p>
+          )}
+        </button>
+      )}
+      {isSavedNews && (
+        <button className='newscard__remove-button'>
+          <p className='newscard__remove-banner'>Sign in to save articles</p>
+        </button>
+      )}
       <div className='newscard__content'>
         <p className='newscard__published-date'>November 4, 2020</p>
         <h2 className='newscard__title'>

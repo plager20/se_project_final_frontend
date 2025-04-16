@@ -16,7 +16,11 @@ function App() {
   const [activeModal, setActiveModal] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [newsArticles, setNewsArticles] = useState({});
+  const [savedArticles, setSavedArticles] = useState({});
+  const [visibleArticles, setVisableArticles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   //Modal Functions
   const handleSignInModal = () => {

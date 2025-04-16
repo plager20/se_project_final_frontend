@@ -32,22 +32,18 @@ const articles = [
 
 const getArticles = async () => {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(articles);
-    }, 500);
+    resolve(articles);
   });
 };
 
 const saveArticles = async ({ _id, isSaved, article, savedArticles }) => {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      if (isSaved) {
-        savedArticles = [...savedArticles, article];
-      } else {
-        savedArticles = savedArticles.filter((art) => art._id !== _id);
-      }
-      resolve(savedArticles);
-    }, 500);
+    if (isSaved) {
+      savedArticles = [...savedArticles, article];
+    } else {
+      savedArticles = savedArticles.filter((art) => art._id !== _id);
+    }
+    resolve(savedArticles);
   });
 };
 

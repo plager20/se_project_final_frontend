@@ -14,6 +14,26 @@
   border-radius: 16px 16px 0 0;
 }
 
+.newscard__keyword {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  border-radius: 10px;
+  border: none;
+  padding: 8px 22px;
+  margin: 0;
+  background-color: #ffffff;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .newscard__save-button {
   position: absolute;
   background-image: url('../../assets/save.svg');
@@ -55,6 +75,49 @@
 
 .newscard__save-button:hover {
   background-image: url('../../assets/save-hover.svg');
+}
+
+.newscard__remove-button {
+  position: absolute;
+  background-image: url('../../assets/remove.svg');
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  top: 24px;
+  right: 24px;
+  border: none;
+  padding: 0;
+}
+
+.newscard__remove-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  right: 45px;
+  width: 159px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  font-family: Roboto;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.newscard__remove-button:hover .newscard__remove-banner {
+  visibility: visible;
+}
+
+.newscard__remove-button:hover {
+  background-image: url('../../assets/remove-hover.svg');
 }
 
 .newscard__content {
