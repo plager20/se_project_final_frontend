@@ -2,7 +2,7 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import SearchForm from '../SearchForm/SearchForm';
 
-function Header({ handleSignInModal, isLoggedIn, handleLogOut }) {
+function Header({ handleSignInModal, isLoggedIn, handleLogOut, handleSearch }) {
   return (
     <header className='header'>
       <Navigation
@@ -17,7 +17,7 @@ function Header({ handleSignInModal, isLoggedIn, handleLogOut }) {
           account.
         </p>
       </div>
-      <SearchForm />
+      <SearchForm handleSearch={handleSearch} />
     </header>
   );
 }

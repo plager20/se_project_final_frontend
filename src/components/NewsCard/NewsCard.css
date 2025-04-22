@@ -150,6 +150,7 @@
   line-height: 22px;
   letter-spacing: 0px;
   margin: 16px 0 18px 0;
+  overflow: hidden;
 }
 
 .newscard__publisher {

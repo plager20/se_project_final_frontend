@@ -10,13 +10,15 @@ import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import { register, login, checkToken } from '../../utils/auth';
 import UserContext from '../../context/UserContext';
+import getNewsArticles from '../../utils/NewsApi';
+import { saveArticles, getArticles } from '../../utils/api';
 
 function App() {
   //useStates
   const [activeModal, setActiveModal] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [newsArticles, setNewsArticles] = useState({});
+  const [newsArticles, setNewsArticles] = useState([]);
   const [savedArticles, setSavedArticles] = useState({});
   const [visibleArticles, setVisableArticles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -71,14 +73,68 @@ function App() {
         setIsLoggedIn(true);
         const { name, email, _id } = response.data;
         setCurrentUser({ name, email, _id });
-        //fetchArticles();
+        fetchArticles();
       }
     } catch (err) {
       console.error(err);
     }
   };
 
-  //NewsApi's
+  //NewsApi
+  const fetchArticles = async () => {
+    const articles = await getArticles();
+    setSavedArticles(articles);
+  };
+
+  const handleSaveArticle = async ({ _id, isSaved, article }) => {
+    try {
+      const updatedArticles = await saveArticles({
+        _id,
+        isSaved,
+        article,
+        savedArticles,
+      });
+
+      setSavedArticles(updatedArticles);
+    } catch (err) {
+      console.error('Error saving article:', err);
+    }
+  };
+
+  const handleCardRender = () => {
+    if (visibleArticles > newsArticles.length) {
+      setVisableArticles(newsArticles.length);
+    }
+    setVisableArticles((prevCount) => prevCount + 3);
+  };
+
+  const handleSearch = async (keyword) => {
+    setIsLoading(true);
+
+    try {
+      const articleData = await getNewsArticles(keyword);
+      ('');
+
+      const articleObj = articleData.map((article) => ({
+        _id: crypto.randomUUID(),
+        isSaved: false,
+        ...article,
+        keyword,
+      }));
+
+      if (!hasSearched) {
+        setHasSearched(true);
+      }
+
+      setNewsArticles(articleObj);
+      setVisableArticles(0);
+      handleCardRender();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   // useEffects
   useEffect(() => {
@@ -103,6 +159,10 @@ function App() {
                   <Main
                     handleSignInModal={handleSignInModal}
                     handleLogOut={handleLogOut}
+                    handleSearch={handleSearch}
+                    handleSaveArticle={handleSaveArticle}
+                    newsArticles={newsArticles}
+                    visibleArticles={visibleArticles}
                   />
                 }
               ></Route>

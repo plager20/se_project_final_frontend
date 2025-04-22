@@ -5,7 +5,6 @@ import Navigation from '../Navigation/Navigation';
 
 function SavedNewsHeader() {
   const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
   return (
     <div className='savedNewsHeader'>
       <Navigation className='navigation-black' />

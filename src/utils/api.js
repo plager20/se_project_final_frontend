@@ -7,7 +7,7 @@ const articles = [
     keyword: 'Technology',
     content:
       'In what could mark a major turning point in the field of quantum computing...',
-    pubDate: '2025-04-10',
+    pubDate: '2025-04-22',
     author: 'John Doe',
   },
   {
@@ -16,7 +16,7 @@ const articles = [
     urlToImage: '',
     keyword: 'Technology',
     content: 'In a world where voice commands and touchscreens dominate...',
-    pubDate: '2025-03-22',
+    pubDate: '2025-04-21',
     author: 'John Doe',
   },
   {
@@ -25,7 +25,7 @@ const articles = [
     urlToImage: '',
     keyword: 'Sports',
     content: 'In a season that began with little hope and fewer headlines...',
-    pubDate: '2025-04-08',
+    pubDate: '2025-04-22',
     author: 'Jane Doe',
   },
 ].map((article) => ({ ...article, _id: crypto.randomUUID() }));
