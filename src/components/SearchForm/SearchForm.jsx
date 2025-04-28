@@ -15,7 +15,7 @@ function SearchForm({ handleSearch }) {
     }
 
     handleSearch(keyword);
-    keyword = '';
+    data.keyword = '';
     console.log(handleSearch());
   };
 

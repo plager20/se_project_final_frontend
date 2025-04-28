@@ -1,15 +1,15 @@
 .newscard {
   display: flex;
   position: relative;
-  max-width: 400px;
-  max-height: 576px;
+  width: 400px;
+  height: 576px;
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 16px;
 }
 
 .newscard__image {
-  max-width: 400px;
+  width: 400px;
   max-height: 272px;
   border-radius: 16px 16px 0 0;
 }
@@ -37,6 +37,18 @@
 .newscard__save-button {
   position: absolute;
   background-image: url('../../assets/save.svg');
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  top: 24px;
+  right: 24px;
+  border: none;
+  padding: 0;
+}
+
+.newscard__save-button_marked {
+  position: absolute;
+  background-image: url('../../assets/save-saved.svg');
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -80,6 +92,8 @@
 .newscard__remove-button {
   position: absolute;
   background-image: url('../../assets/remove.svg');
+  background-repeat: no-repeat;
+  background-position: center;
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -133,15 +147,19 @@
   vertical-align: middle;
   color: #b6bcbf;
   margin: 0 0 12px 0;
+  overflow: hidden;
 }
 
 .newscard__title {
+  max-height: 60px;
+
   font-family: Roboto Slab;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
   letter-spacing: 0px;
   margin: 0;
+  overflow: hidden;
 }
 
 .newscard__description {
@@ -162,4 +180,5 @@
   text-transform: uppercase;
   color: #b6bcbf;
   margin: 0;
+  overflow: hidden;
 }

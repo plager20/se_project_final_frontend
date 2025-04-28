@@ -11,6 +11,7 @@ function Main({
   handleSaveArticle,
   newsArticles,
   visibleArticles,
+  handleCardRender,
 }) {
   return (
     <main>
@@ -25,6 +26,7 @@ function Main({
         handleSaveArticle={handleSaveArticle}
         newsArticles={newsArticles}
         visibleArticles={visibleArticles}
+        handleCardRender={handleCardRender}
       />
 
       <About />

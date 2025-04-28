@@ -1,12 +1,13 @@
-import { useContext } from 'react';
-import { useLocation } from 'react-router';
+import { useContext, useState } from 'react';
 import UserContext from '../../context/UserContext';
+import { useLocation } from 'react-router';
 
 import './NewsCard.css';
 
-function NewsCard(article, handleSaveArticle) {
+function NewsCard({ handleSaveArticle, ...article }) {
   const { isLoggedIn } = useContext(UserContext);
-  const isSavedNews = location.pathname === '/saved-news';
+  const location = useLocation().pathname;
+  const isSavedNews = location === '/saved-news';
   const {
     _id,
     isSaved,
@@ -18,9 +19,27 @@ function NewsCard(article, handleSaveArticle) {
     author,
   } = article;
 
-  const handleSave = (e) => {
-    e.preventDefault();
-    handleSaveArticle();
+  const [marked, setIsMarked] = useState(false);
+
+  const handleSave = () => {
+    if (!isLoggedIn) return;
+
+    const updateMarked = !marked;
+
+    setIsMarked(updateMarked);
+
+    const updatedArticle = {
+      _id,
+      isSaved: updateMarked,
+      title,
+      urlToImage,
+      keyword,
+      content,
+      publishedAt,
+      author,
+    };
+
+    handleSaveArticle({ _id, isSaved: updateMarked, article: updatedArticle });
   };
 
   return (
@@ -32,7 +51,12 @@ function NewsCard(article, handleSaveArticle) {
       />
       {isSavedNews && <p className='newscard__keyword'>{keyword}</p>}
       {!isSavedNews && (
-        <button className='newscard__save-button' onClick={handleSave}>
+        <button
+          className={`newscard__save-button ${
+            marked ? 'newscard__save-button_marked' : ''
+          }`}
+          onClick={handleSave}
+        >
           {!isLoggedIn && (
             <p className='newscard__signin-to-save'>Sign in to save articles</p>
           )}

@@ -19,7 +19,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [newsArticles, setNewsArticles] = useState([]);
-  const [savedArticles, setSavedArticles] = useState({});
+  const [savedArticles, setSavedArticles] = useState([]);
   const [visibleArticles, setVisableArticles] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
@@ -53,7 +53,7 @@ function App() {
 
   const handleLogIn = async (email, password, e) => {
     try {
-      const response = await login();
+      const response = await login(email, password);
       if (response.token) {
         localStorage.setItem('token', response.token);
         handleCheckToken();
@@ -95,9 +95,22 @@ function App() {
         savedArticles,
       });
 
+      localStorage.setItem('updatedArticles', JSON.stringify(updatedArticles));
       setSavedArticles(updatedArticles);
+      console.log('Article Saved');
+      console.log(updatedArticles);
     } catch (err) {
       console.error('Error saving article:', err);
+    }
+  };
+
+  const checkSavedArticles = () => {
+    const alreadySaved = localStorage.getItem('updatedArticles');
+    if (!alreadySaved) return;
+
+    const parsedArticles = JSON.parse(alreadySaved);
+    if (JSON.stringify(parsedArticles) !== JSON.stringify(savedArticles)) {
+      setSavedArticles(parsedArticles);
     }
   };
 
@@ -147,6 +160,10 @@ function App() {
     setCurrentUser(null);
   };
 
+  useEffect(() => {
+    checkSavedArticles();
+  });
+
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ currentUser, isLoggedIn }}>
@@ -163,10 +180,19 @@ function App() {
                     handleSaveArticle={handleSaveArticle}
                     newsArticles={newsArticles}
                     visibleArticles={visibleArticles}
+                    handleCardRender={handleCardRender}
                   />
                 }
               ></Route>
-              <Route path='/saved-news' element={<SavedNews />}></Route>
+              <Route
+                path='/saved-news'
+                element={
+                  <SavedNews
+                    savedArticles={savedArticles}
+                    handleLogOut={handleLogOut}
+                  />
+                }
+              ></Route>
             </Routes>
             <Footer />
           </div>

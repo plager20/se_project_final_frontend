@@ -1,5 +1,4 @@
 .newscards {
-  flex-direction: column;
   background-color: #f5f6f7;
   padding: 80px 104px;
   color: #1a1b22;
@@ -19,7 +18,10 @@
   display: flex;
   margin: 0;
   padding: 0 0 64px 0;
-  column-gap: 16px;
+  column-gap: 48px;
+  row-gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .newscard__button-container {

@@ -1,8 +1,12 @@
 import './NewsCards.css';
 import NewsCard from '../NewsCard/NewsCard';
 
-function NewsCards({ handleSaveArticle, newsArticles, visibleArticles }) {
-  console.log(newsArticles);
+function NewsCards({
+  handleSaveArticle,
+  newsArticles,
+  visibleArticles,
+  handleCardRender,
+}) {
   return (
     <section className='newscards'>
       <h2 className='newscards__title'>Search Results</h2>
@@ -16,7 +20,9 @@ function NewsCards({ handleSaveArticle, newsArticles, visibleArticles }) {
         ))}
       </ul>
       <div className='newscard__button-container'>
-        <button className='newscards__show-more'>Show more</button>
+        <button className='newscards__show-more' onClick={handleCardRender}>
+          Show more
+        </button>
       </div>
     </section>
   );
