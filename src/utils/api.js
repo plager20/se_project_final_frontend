@@ -39,7 +39,10 @@ const getArticles = async () => {
 const saveArticles = async ({ _id, isSaved, article, savedArticles }) => {
   return new Promise((resolve) => {
     if (isSaved) {
-      savedArticles = [...savedArticles, article];
+      const alreadyExists = savedArticles.some((art) => art._id === _id);
+      if (!alreadyExists) {
+        savedArticles = [...savedArticles, article];
+      }
     } else {
       savedArticles = savedArticles.filter((art) => art._id !== _id);
     }
@@ -47,15 +50,4 @@ const saveArticles = async ({ _id, isSaved, article, savedArticles }) => {
   });
 };
 
-const unsaveArticles = async ({ _id, isSaved, article, savedArticles }) => {
-  return new Promise((resolve) => {
-    if (isSaved) {
-      savedArticles = [...savedArticles, ''];
-    } else {
-      savedArticles = savedArticles.filter((art) => art._id !== _id);
-    }
-    resolve(savedArticles);
-  });
-};
-
-export { getArticles, saveArticles, unsaveArticles };
+export { getArticles, saveArticles };

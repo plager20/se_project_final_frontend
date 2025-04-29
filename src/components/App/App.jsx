@@ -11,7 +11,7 @@ import SavedNews from '../SavedNews/SavedNews';
 import { register, login, checkToken } from '../../utils/auth';
 import UserContext from '../../context/UserContext';
 import getNewsArticles from '../../utils/NewsApi';
-import { saveArticles, unsaveArticles, getArticles } from '../../utils/api';
+import { saveArticles, getArticles } from '../../utils/api';
 
 function App() {
   //useStates
@@ -95,42 +95,11 @@ function App() {
         savedArticles,
       });
 
-      localStorage.setItem('updatedArticles', JSON.stringify(updatedArticles));
       setSavedArticles(updatedArticles);
       console.log('Article Saved');
       console.log(updatedArticles);
     } catch (err) {
       console.error('Error saving article:', err);
-    }
-  };
-
-  const checkSavedArticles = () => {
-    const alreadySaved = localStorage.getItem('updatedArticles');
-    if (!alreadySaved) return;
-
-    const parsedArticles = JSON.parse(alreadySaved);
-    if (JSON.stringify(parsedArticles) !== JSON.stringify(savedArticles)) {
-      setSavedArticles(parsedArticles);
-    }
-  };
-
-  const handleUnsaveArticle = async ({ _id, isSaved, article }) => {
-    try {
-      const updatedArticles = await unsaveArticles({
-        _id,
-        isSaved,
-        article,
-        savedArticles,
-      });
-
-      localStorage.setItem('updatedArticles', JSON.stringify(updatedArticles));
-
-      setSavedArticles(updatedArticles);
-
-      console.log('Article Unsaved');
-      console.log(updatedArticles);
-    } catch (err) {
-      console.error('Error unsaving article:', err);
     }
   };
 
@@ -180,10 +149,6 @@ function App() {
     setCurrentUser(null);
   };
 
-  useEffect(() => {
-    checkSavedArticles();
-  });
-
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ currentUser, isLoggedIn }}>
@@ -210,7 +175,7 @@ function App() {
                   <SavedNews
                     savedArticles={savedArticles}
                     handleLogOut={handleLogOut}
-                    handleUnsaveArticle={handleUnsaveArticle}
+                    handleSaveArticle={handleSaveArticle}
                   />
                 }
               ></Route>

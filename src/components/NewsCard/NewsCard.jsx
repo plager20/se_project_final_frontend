@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 
 import './NewsCard.css';
 
-function NewsCard({ handleSaveArticle, handleUnsaveArticle, ...article }) {
+function NewsCard({ handleSaveArticle, ...article }) {
   const { isLoggedIn } = useContext(UserContext);
   const location = useLocation().pathname;
   const isSavedNews = location === '/saved-news';
@@ -19,18 +19,17 @@ function NewsCard({ handleSaveArticle, handleUnsaveArticle, ...article }) {
     author,
   } = article;
 
-  const [marked, setIsMarked] = useState(false);
+  const [saved, setisSaved] = useState(false);
 
-  const handleSave = () => {
+  const handleToggleSave = () => {
     if (!isLoggedIn) return;
 
-    const updateMarked = !marked;
-
-    setIsMarked(updateMarked);
+    const updateSaved = !saved;
+    setisSaved(updateSaved);
 
     const updatedArticle = {
       _id,
-      isSaved: updateMarked,
+      isSaved: updateSaved,
       title,
       urlToImage,
       keyword,
@@ -39,32 +38,11 @@ function NewsCard({ handleSaveArticle, handleUnsaveArticle, ...article }) {
       author,
     };
 
-    handleSaveArticle({ _id, isSaved: updateMarked, article: updatedArticle });
-  };
-
-  const handleUnsave = () => {
-    if (!isLoggedIn) return;
-
-    const updateMarked = marked;
-
-    setIsMarked(updateMarked);
-
-    const updatedArticle = {
-      _id,
-      isSaved: updateMarked,
-      title,
-      urlToImage,
-      keyword,
-      content,
-      publishedAt,
-      author,
-    };
-
-    handleUnsaveArticle({
-      _id,
-      isSaved: updateMarked,
-      article: updatedArticle,
-    });
+    if (isSavedNews || saved) {
+      handleSaveArticle({ _id, isSaved: false, article: updatedArticle });
+    } else {
+      handleSaveArticle({ _id, isSaved: updateSaved, article: updatedArticle });
+    }
   };
 
   return (
@@ -78,9 +56,9 @@ function NewsCard({ handleSaveArticle, handleUnsaveArticle, ...article }) {
       {!isSavedNews && (
         <button
           className={`newscard__save-button ${
-            marked ? 'newscard__save-button_marked' : ''
+            saved ? 'newscard__save-button_marked' : ''
           }`}
-          onClick={handleSave}
+          onClick={handleToggleSave}
         >
           {!isLoggedIn && (
             <p className='newscard__signin-to-save'>Sign in to save articles</p>
@@ -88,7 +66,7 @@ function NewsCard({ handleSaveArticle, handleUnsaveArticle, ...article }) {
         </button>
       )}
       {isSavedNews && (
-        <button className='newscard__remove-button' onClick={handleUnsave}>
+        <button className='newscard__remove-button' onClick={handleToggleSave}>
           <p className='newscard__remove-banner'>Remove from saved</p>
         </button>
       )}
