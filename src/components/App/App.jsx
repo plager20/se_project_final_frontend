@@ -11,7 +11,7 @@ import SavedNews from '../SavedNews/SavedNews';
 import { register, login, checkToken } from '../../utils/auth';
 import UserContext from '../../context/UserContext';
 import getNewsArticles from '../../utils/NewsApi';
-import { saveArticles, getArticles } from '../../utils/api';
+import { saveArticles, unsaveArticles, getArticles } from '../../utils/api';
 
 function App() {
   //useStates
@@ -114,6 +114,26 @@ function App() {
     }
   };
 
+  const handleUnsaveArticle = async ({ _id, isSaved, article }) => {
+    try {
+      const updatedArticles = await unsaveArticles({
+        _id,
+        isSaved,
+        article,
+        savedArticles,
+      });
+
+      localStorage.setItem('updatedArticles', JSON.stringify(updatedArticles));
+
+      setSavedArticles(updatedArticles);
+
+      console.log('Article Unsaved');
+      console.log(updatedArticles);
+    } catch (err) {
+      console.error('Error unsaving article:', err);
+    }
+  };
+
   const handleCardRender = () => {
     if (visibleArticles > newsArticles.length) {
       setVisableArticles(newsArticles.length);
@@ -190,6 +210,7 @@ function App() {
                   <SavedNews
                     savedArticles={savedArticles}
                     handleLogOut={handleLogOut}
+                    handleUnsaveArticle={handleUnsaveArticle}
                   />
                 }
               ></Route>

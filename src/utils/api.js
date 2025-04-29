@@ -47,4 +47,15 @@ const saveArticles = async ({ _id, isSaved, article, savedArticles }) => {
   });
 };
 
-export { getArticles, saveArticles };
+const unsaveArticles = async ({ _id, isSaved, article, savedArticles }) => {
+  return new Promise((resolve) => {
+    if (isSaved) {
+      savedArticles = [...savedArticles, ''];
+    } else {
+      savedArticles = savedArticles.filter((art) => art._id !== _id);
+    }
+    resolve(savedArticles);
+  });
+};
+
+export { getArticles, saveArticles, unsaveArticles };

@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 
 import './NewsCard.css';
 
-function NewsCard({ handleSaveArticle, ...article }) {
+function NewsCard({ handleSaveArticle, handleUnsaveArticle, ...article }) {
   const { isLoggedIn } = useContext(UserContext);
   const location = useLocation().pathname;
   const isSavedNews = location === '/saved-news';
@@ -42,6 +42,31 @@ function NewsCard({ handleSaveArticle, ...article }) {
     handleSaveArticle({ _id, isSaved: updateMarked, article: updatedArticle });
   };
 
+  const handleUnsave = () => {
+    if (!isLoggedIn) return;
+
+    const updateMarked = marked;
+
+    setIsMarked(updateMarked);
+
+    const updatedArticle = {
+      _id,
+      isSaved: updateMarked,
+      title,
+      urlToImage,
+      keyword,
+      content,
+      publishedAt,
+      author,
+    };
+
+    handleUnsaveArticle({
+      _id,
+      isSaved: updateMarked,
+      article: updatedArticle,
+    });
+  };
+
   return (
     <li className='newscard'>
       <img
@@ -63,7 +88,7 @@ function NewsCard({ handleSaveArticle, ...article }) {
         </button>
       )}
       {isSavedNews && (
-        <button className='newscard__remove-button'>
+        <button className='newscard__remove-button' onClick={handleUnsave}>
           <p className='newscard__remove-banner'>Remove from saved</p>
         </button>
       )}
