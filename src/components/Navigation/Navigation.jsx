@@ -20,7 +20,14 @@ function Navigation({ handleSignInModal, handleLogOut }) {
       </Link>
       <div className='navigation__button-container'>
         <Link to='/'>
-          <button className='navigation__home-button' id='/'>
+          <button
+            className={
+              isSavedNews
+                ? 'navigation__home-button_black'
+                : 'navigation__home-button'
+            }
+            id='/'
+          >
             Home
           </button>
         </Link>
@@ -34,7 +41,15 @@ function Navigation({ handleSignInModal, handleLogOut }) {
         )}
         {isLoggedIn && (
           <Link to='/saved-news'>
-            <button className='navigation__savednews'>Saved articles</button>
+            <button
+              className={
+                isSavedNews
+                  ? 'navigation__savednews-button_black'
+                  : 'navigation__savednews-button'
+              }
+            >
+              Saved articles
+            </button>
           </Link>
         )}
         {isLoggedIn && (

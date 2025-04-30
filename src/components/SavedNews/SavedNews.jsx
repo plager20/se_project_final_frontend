@@ -9,7 +9,10 @@ function SavedNews({ savedArticles, handleLogOut, handleSaveArticle }) {
   console.log('savedArticles:', savedArticles);
   return (
     <div className='savedNews'>
-      <SavedNewsHeader handleLogOut={handleLogOut} />
+      <SavedNewsHeader
+        handleLogOut={handleLogOut}
+        savedArticles={savedArticles}
+      />
       <ul className='saved-news'>
         {savedArticles.map((article) => (
           <NewsCard
