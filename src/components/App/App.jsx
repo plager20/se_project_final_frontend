@@ -12,6 +12,7 @@ import { register, login, checkToken } from '../../utils/auth';
 import UserContext from '../../context/UserContext';
 import getNewsArticles from '../../utils/NewsApi';
 import { saveArticles, getArticles } from '../../utils/api';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 function App() {
   //useStates
@@ -169,14 +170,17 @@ function App() {
                   />
                 }
               ></Route>
+
               <Route
                 path='/saved-news'
                 element={
-                  <SavedNews
-                    savedArticles={savedArticles}
-                    handleLogOut={handleLogOut}
-                    handleSaveArticle={handleSaveArticle}
-                  />
+                  <ProtectedRoute>
+                    <SavedNews
+                      savedArticles={savedArticles}
+                      handleLogOut={handleLogOut}
+                      handleSaveArticle={handleSaveArticle}
+                    />
+                  </ProtectedRoute>
                 }
               ></Route>
             </Routes>
