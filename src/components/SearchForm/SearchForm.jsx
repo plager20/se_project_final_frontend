@@ -13,15 +13,11 @@ function SearchForm({ handleSearch }) {
     if (!keyword) {
       return;
     }
-
     handleSearch(keyword);
-    data.keyword = '';
-    console.log(handleSearch());
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value);
     setData((prevData) => ({
       ...prevData,
       [name]: value,

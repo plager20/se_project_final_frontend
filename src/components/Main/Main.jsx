@@ -12,6 +12,8 @@ function Main({
   newsArticles,
   visibleArticles,
   handleCardRender,
+  isLoading,
+  hasSearched,
 }) {
   return (
     <main>
@@ -20,14 +22,18 @@ function Main({
         handleLogOut={handleLogOut}
         handleSearch={handleSearch}
       />
-      <Preloader />
-
-      <NewsCards
-        handleSaveArticle={handleSaveArticle}
-        newsArticles={newsArticles}
-        visibleArticles={visibleArticles}
-        handleCardRender={handleCardRender}
-      />
+      {isLoading ? (
+        <Preloader isLoading={isLoading} />
+      ) : newsArticles.length > 0 ? (
+        <NewsCards
+          handleSaveArticle={handleSaveArticle}
+          newsArticles={newsArticles}
+          visibleArticles={visibleArticles}
+          handleCardRender={handleCardRender}
+        />
+      ) : hasSearched ? (
+        <Preloader />
+      ) : null}
 
       <About />
     </main>

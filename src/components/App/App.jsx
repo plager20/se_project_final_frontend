@@ -167,6 +167,8 @@ function App() {
                     newsArticles={newsArticles}
                     visibleArticles={visibleArticles}
                     handleCardRender={handleCardRender}
+                    isLoading={isLoading}
+                    hasSearched={hasSearched}
                   />
                 }
               ></Route>

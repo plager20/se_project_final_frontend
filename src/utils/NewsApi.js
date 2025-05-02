@@ -37,6 +37,9 @@ const getNewsArticles = async (keyword) => {
 
   try {
     const articleObject = await request(url);
+    if (articleObject.totalResults === 0) {
+      return [];
+    }
     const articles = articleData(articleObject);
     return articles;
   } catch (err) {
