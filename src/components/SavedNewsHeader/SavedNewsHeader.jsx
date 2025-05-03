@@ -9,7 +9,18 @@ function SavedNewsHeader({ handleLogOut, savedArticles }) {
   const savedArticleKeywords = [
     ...new Set(Object.values(savedArticles).map((article) => article.keyword)),
   ];
-  const displayedKeywords = savedArticleKeywords.slice(0, 3);
+
+  const capitalizedSavedArticleKeywords = savedArticleKeywords.map(
+    (savedArticleKeyword) => {
+      return (
+        savedArticleKeyword.charAt(0).toUpperCase() +
+        savedArticleKeyword.slice(1)
+      );
+    }
+  );
+
+  const displayedKeywords = capitalizedSavedArticleKeywords.slice(0, 3);
+
   const remainingKeywords =
     savedArticleKeywords.length - displayedKeywords.length;
 

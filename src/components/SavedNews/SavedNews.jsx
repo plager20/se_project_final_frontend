@@ -6,7 +6,6 @@ import NewsCard from '../NewsCard/NewsCard';
 
 function SavedNews({ savedArticles, handleLogOut, handleSaveArticle }) {
   const { currentUser, isLoggedIn } = useContext(UserContext);
-  console.log('savedArticles:', savedArticles);
   return (
     <div className='savedNews'>
       <SavedNewsHeader

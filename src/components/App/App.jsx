@@ -97,8 +97,6 @@ function App() {
       });
 
       setSavedArticles(updatedArticles);
-      console.log('Article Saved');
-      console.log(updatedArticles);
     } catch (err) {
       console.error('Error saving article:', err);
     }
