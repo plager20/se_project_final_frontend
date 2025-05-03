@@ -91,16 +91,14 @@ function SignUpModal({
         Sign up
       </button>
       <div className='login_button-container'>
-        <span>
-          or
-          <button
-            className='modal__redirect-button'
-            type='button'
-            onClick={handleSignInModal}
-          >
-            Sign in
-          </button>
-        </span>
+        <button
+          className='modal__redirect-button'
+          type='button'
+          onClick={handleSignInModal}
+        >
+          <span className='modal__span'>or </span>
+          Sign in
+        </button>
       </div>
     </ModalWithForm>
   );

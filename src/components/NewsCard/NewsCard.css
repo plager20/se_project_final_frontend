@@ -28,7 +28,7 @@
   background-color: #ffffff;
   font-family: Roboto;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 100%;
   text-align: center;
   vertical-align: middle;
@@ -181,4 +181,68 @@
   color: #b6bcbf;
   margin: 0;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .newscard {
+    width: 224px;
+    height: 420px;
+  }
+
+  .newscard__image {
+    width: 224px;
+    height: 150px;
+  }
+
+  .newscard__keyword {
+    top: 8px;
+    left: 8px;
+    padding: 8px 20px;
+  }
+
+  .newscard__save-button {
+    top: 8px;
+    right: 8px;
+  }
+
+  .newscard__save-button_marked {
+    border-radius: 8px;
+    top: 8px;
+    right: 8px;
+  }
+
+  .newscard__signin-to-save {
+    width: 140px;
+    font-size: 12px;
+  }
+
+  .newscard__remove-button {
+    top: 8px;
+    right: 8px;
+  }
+
+  .newscard__remove-banner {
+    width: 140px;
+    font-size: 12px;
+  }
+
+  .newscard__content {
+    padding: 20px 16px 16px;
+  }
+
+  .newscard__published-date {
+    margin: 0 0 8px 0;
+  }
+
+  .newscard__title {
+    max-height: 72px;
+    font-size: 22px;
+    line-height: 24px;
+  }
+
+  .newscard__description {
+    margin: 10px 0 12px 0;
+    width: 192px;
+    height: 88px;
+  }
 }

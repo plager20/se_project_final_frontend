@@ -38,3 +38,27 @@
   height: 64px;
   padding: 0;
 }
+
+@media (max-width: 768px) {
+  .newscards {
+    padding: 40px 40px;
+  }
+
+  .newscards__title {
+    font-size: 30px;
+    line-height: 34px;
+    padding: 0 0 32px 0;
+  }
+
+  .newscards__list {
+    padding: 0 0 32px 0;
+    gap: 8px;
+  }
+
+  .newscards__show-more {
+    width: 240px;
+    height: 56px;
+    font-weight: 500;
+    font-size: 18px;
+  }
+}

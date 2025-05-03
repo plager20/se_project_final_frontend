@@ -12,7 +12,7 @@ function SavedNews({ savedArticles, handleLogOut, handleSaveArticle }) {
         handleLogOut={handleLogOut}
         savedArticles={savedArticles}
       />
-      <ul className='saved-news'>
+      <ul className='savesNews__saved-articles'>
         {savedArticles.map((article) => (
           <NewsCard
             handleSaveArticle={handleSaveArticle}

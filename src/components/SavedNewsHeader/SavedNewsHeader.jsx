@@ -36,7 +36,7 @@ function SavedNewsHeader({ handleLogOut, savedArticles }) {
         </h2>
         <h3 className='savedNewsHeader__keywords'>
           By keywords:{' '}
-          <span>
+          <span className='savedNewsHeader__keywords-bold'>
             {displayedKeywords.join(', ')}
             {remainingKeywords > 0
               ? ` and ${remainingKeywords} other${

@@ -19,7 +19,7 @@
   border: #d1d2d6 1px solid;
   border-radius: 100px;
   margin: 0;
-  padding: 0 0 0 22px;
+  padding: 0 0 0 24px;
   caret-color: #2f71e5;
 }
 
@@ -47,4 +47,27 @@
 
 .searchfrom__submit-button:active {
   background-color: #2a65cc;
+}
+
+@media (max-width: 768px) {
+  .searchform__input-container {
+    position: relative;
+    display: flex;
+    margin: 0;
+    padding: 0 0 48px 0;
+  }
+
+  .searchform_input {
+    width: 452px;
+    height: 54px;
+  }
+
+  .searchform_input:focus {
+    outline: none;
+  }
+
+  .searchfrom__submit-button {
+    width: 160px;
+    height: 56px;
+  }
 }

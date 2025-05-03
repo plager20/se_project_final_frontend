@@ -32,5 +32,19 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0px;
-  width: 608px;
+  max-width: 608px;
+}
+
+@media (max-width: 768px) {
+  .header__title {
+    font-size: 36px;
+    max-width: 385px;
+    padding: 38px 0 0 0;
+    max-height: 80px;
+  }
+
+  .header__subtext {
+    padding: 16px 0 48px 0;
+    max-width: 452px;
+  }
 }
