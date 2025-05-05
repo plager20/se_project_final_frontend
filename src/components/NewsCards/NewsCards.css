@@ -1,6 +1,6 @@
 .newscards {
   background-color: #f5f6f7;
-  padding: 80px 104px;
+  padding: 80px 102px 80px 106px;
   color: #1a1b22;
 }
 
@@ -18,7 +18,7 @@
   display: flex;
   margin: 0;
   padding: 0 0 64px 0;
-  column-gap: 48px;
+  column-gap: 16px;
   row-gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
@@ -37,9 +37,11 @@
   width: 288px;
   height: 64px;
   padding: 0;
+  font-weight: 500;
+  font-size: 18px;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .newscards {
     padding: 40px 40px;
   }
@@ -58,7 +60,24 @@
   .newscards__show-more {
     width: 240px;
     height: 56px;
-    font-weight: 500;
-    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .newscards {
+    padding: 32px 16px 24px;
+  }
+
+  .newscards__title {
+    padding: 0 0 58px 0;
+  }
+
+  .newscards__list {
+    padding: 0 0 16px 0;
+    row-gap: 10px;
+  }
+
+  .newscards__show-more {
+    width: 288px;
   }
 }

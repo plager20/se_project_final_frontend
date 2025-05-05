@@ -1,4 +1,3 @@
-import './Main.css';
 import NewsCards from '../NewsCards/NewsCards';
 import About from '../About/About';
 import Header from '../Header/Header';
@@ -6,6 +5,7 @@ import Preloader from '../Preloader/Preloader';
 
 function Main({
   handleSignInModal,
+  handleNavMenuModal,
   handleLogOut,
   handleSearch,
   handleSaveArticle,
@@ -19,6 +19,7 @@ function Main({
     <main>
       <Header
         handleSignInModal={handleSignInModal}
+        handleNavMenuModal={handleNavMenuModal}
         handleLogOut={handleLogOut}
         handleSearch={handleSearch}
       />

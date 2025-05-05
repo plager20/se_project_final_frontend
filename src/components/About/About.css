@@ -37,7 +37,7 @@
   margin: 0;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .about__picture {
     width: 232px;
     height: 232px;
@@ -57,5 +57,32 @@
   .about__description {
     font-size: 14px;
     line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .about {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about__picture {
+    width: 272px;
+    height: 272px;
+    margin: 32px 24px 24px;
+  }
+
+  .about__content {
+    padding: 0 16px 128px;
+    width: 288px;
+  }
+
+  .about__header {
+    line-height: 40px;
+  }
+
+  .about__description {
+    font-size: 18px;
+    line-height: 24px;
   }
 }

@@ -42,7 +42,7 @@
   letter-spacing: 0px;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .savedNewsHeader__text-container {
     padding: 0 0 0 40px;
   }

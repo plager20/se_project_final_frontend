@@ -6,7 +6,7 @@ import './Navigation.css';
 import logout from '../../assets/logout.svg';
 import logoutBlack from '../../assets/logout-black.svg';
 
-function Navigation({ handleSignInModal, handleLogOut }) {
+function Navigation({ handleSignInModal, handleNavMenuModal, handleLogOut }) {
   const { currentUser, isLoggedIn } = useContext(UserContext);
   const location = useLocation();
   const isSavedNews = location.pathname === '/saved-news';
@@ -18,6 +18,10 @@ function Navigation({ handleSignInModal, handleLogOut }) {
       <Link to='/'>
         <p className='navigation__logo'>NewsExplorer</p>
       </Link>
+      <button
+        className='navigation__mobile-menu'
+        onClick={handleNavMenuModal}
+      ></button>
       <div className='navigation__button-container'>
         <Link to='/'>
           <button
@@ -58,7 +62,7 @@ function Navigation({ handleSignInModal, handleLogOut }) {
             <img
               className='navigation__logout'
               src={isSavedNews ? logoutBlack : logout}
-              alt='logout symbol'
+              alt='logout icon'
             />
           </button>
         )}

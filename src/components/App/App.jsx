@@ -6,6 +6,7 @@ import Footer from '../Footer/Footer';
 import SignInModal from '../SignInModal/SignInModal';
 import SignUpModal from '../SignUpModal/SignUpModal';
 import RegistrationConfirmationModal from '../RegistrationConfirmationModal/RegistrationConfirmationModal';
+import NavMenuModal from '../NavMenuModal/NavMenuModal';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import { register, login, checkToken } from '../../utils/auth';
@@ -35,8 +36,11 @@ function App() {
   };
 
   const handleRegistrationConfirmationModal = () => {
-    console.log('opening');
     setActiveModal('registrationconfirmation');
+  };
+
+  const handleNavMenuModal = () => {
+    setActiveModal('navmenu');
   };
 
   const closeActiveModal = () => {
@@ -159,6 +163,7 @@ function App() {
                 element={
                   <Main
                     handleSignInModal={handleSignInModal}
+                    handleNavMenuModal={handleNavMenuModal}
                     handleLogOut={handleLogOut}
                     handleSearch={handleSearch}
                     handleSaveArticle={handleSaveArticle}
@@ -199,6 +204,11 @@ function App() {
             handleRegistration={handleRegistration}
           />
           <RegistrationConfirmationModal
+            activeModal={activeModal}
+            closeActiveModal={closeActiveModal}
+            handleSignInModal={handleSignInModal}
+          />
+          <NavMenuModal
             activeModal={activeModal}
             closeActiveModal={closeActiveModal}
             handleSignInModal={handleSignInModal}

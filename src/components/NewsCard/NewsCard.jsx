@@ -14,7 +14,7 @@ function NewsCard({ handleSaveArticle, ...article }) {
     title,
     urlToImage,
     keyword,
-    content,
+    description,
     publishedAt,
     author,
   } = article;
@@ -33,7 +33,7 @@ function NewsCard({ handleSaveArticle, ...article }) {
       title,
       urlToImage,
       keyword,
-      content,
+      description,
       publishedAt,
       author,
     };
@@ -73,7 +73,7 @@ function NewsCard({ handleSaveArticle, ...article }) {
       <div className='newscard__content'>
         <p className='newscard__published-date'>{publishedAt}</p>
         <h2 className='newscard__title'>{title}</h2>
-        <p className='newscard__description'>{content}</p>
+        <p className='newscard__description'>{description}</p>
         <p className='newscard__publisher'>{author}</p>
       </div>
     </li>
