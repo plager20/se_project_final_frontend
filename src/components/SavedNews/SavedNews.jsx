@@ -4,13 +4,20 @@ import UserContext from '../../context/UserContext';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import NewsCard from '../NewsCard/NewsCard';
 
-function SavedNews({ savedArticles, handleLogOut, handleSaveArticle }) {
-  const { currentUser, isLoggedIn } = useContext(UserContext);
+function SavedNews({
+  savedArticles,
+  handleLogOut,
+  handleSaveArticle,
+  handleNavMenuModal,
+  activeModal,
+}) {
   return (
     <div className='savedNews'>
       <SavedNewsHeader
         handleLogOut={handleLogOut}
         savedArticles={savedArticles}
+        handleNavMenuModal={handleNavMenuModal}
+        activeModal={activeModal}
       />
       <ul className='savesNews__saved-articles'>
         {savedArticles.map((article) => (

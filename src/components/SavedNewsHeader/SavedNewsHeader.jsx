@@ -3,7 +3,12 @@ import { useContext } from 'react';
 import UserContext from '../../context/UserContext';
 import Navigation from '../Navigation/Navigation';
 
-function SavedNewsHeader({ handleLogOut, savedArticles }) {
+function SavedNewsHeader({
+  handleLogOut,
+  savedArticles,
+  handleNavMenuModal,
+  activeModal,
+}) {
   const { currentUser } = useContext(UserContext);
 
   const savedArticleKeywords = [
@@ -26,7 +31,12 @@ function SavedNewsHeader({ handleLogOut, savedArticles }) {
 
   return (
     <div className='savedNewsHeader'>
-      <Navigation handleLogOut={handleLogOut} className='navigation-black' />
+      <Navigation
+        handleLogOut={handleLogOut}
+        handleNavMenuModal={handleNavMenuModal}
+        activeModal={activeModal}
+        className='navigation-black'
+      />
       <div className='savedNewsHeader__text-container'>
         <p className='savedNewsHeader__saved'>Saved articles</p>
         <h2 className='savedNewsHeader__info'>

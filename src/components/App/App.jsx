@@ -172,6 +172,7 @@ function App() {
                     handleCardRender={handleCardRender}
                     isLoading={isLoading}
                     hasSearched={hasSearched}
+                    activeModal={activeModal}
                   />
                 }
               ></Route>
@@ -184,6 +185,8 @@ function App() {
                       savedArticles={savedArticles}
                       handleLogOut={handleLogOut}
                       handleSaveArticle={handleSaveArticle}
+                      handleNavMenuModal={handleNavMenuModal}
+                      activeModal={activeModal}
                     />
                   </ProtectedRoute>
                 }
@@ -212,6 +215,7 @@ function App() {
             activeModal={activeModal}
             closeActiveModal={closeActiveModal}
             handleSignInModal={handleSignInModal}
+            handleLogOut={handleLogOut}
           />
         </div>
       </UserContext.Provider>

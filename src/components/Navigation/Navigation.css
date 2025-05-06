@@ -38,6 +38,10 @@ a {
   visibility: hidden;
 }
 
+.navigation__mobile-menu_black {
+  visibility: hidden;
+}
+
 .navigation__button-container {
   display: flex;
   gap: 42px;
@@ -225,6 +229,16 @@ a {
   .navigation__mobile-menu {
     visibility: visible;
     background-image: url('../../assets/menu-icon.svg');
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .navigation__mobile-menu_black {
+    visibility: visible;
+    background-image: url('../../assets/menu-icon-black.svg');
     width: 24px;
     height: 24px;
     background-color: transparent;

@@ -14,6 +14,7 @@ function Main({
   handleCardRender,
   isLoading,
   hasSearched,
+  activeModal,
 }) {
   return (
     <main>
@@ -22,6 +23,7 @@ function Main({
         handleNavMenuModal={handleNavMenuModal}
         handleLogOut={handleLogOut}
         handleSearch={handleSearch}
+        activeModal={activeModal}
       />
       {isLoading ? (
         <Preloader isLoading={isLoading} />

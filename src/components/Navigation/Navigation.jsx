@@ -6,7 +6,12 @@ import './Navigation.css';
 import logout from '../../assets/logout.svg';
 import logoutBlack from '../../assets/logout-black.svg';
 
-function Navigation({ handleSignInModal, handleNavMenuModal, handleLogOut }) {
+function Navigation({
+  handleSignInModal,
+  handleNavMenuModal,
+  handleLogOut,
+  activeModal,
+}) {
   const { currentUser, isLoggedIn } = useContext(UserContext);
   const location = useLocation();
   const isSavedNews = location.pathname === '/saved-news';
@@ -18,10 +23,17 @@ function Navigation({ handleSignInModal, handleNavMenuModal, handleLogOut }) {
       <Link to='/'>
         <p className='navigation__logo'>NewsExplorer</p>
       </Link>
-      <button
-        className='navigation__mobile-menu'
-        onClick={handleNavMenuModal}
-      ></button>
+      {activeModal !== 'signin' && activeModal !== 'signup' && (
+        <button
+          className={
+            !isSavedNews
+              ? 'navigation__mobile-menu'
+              : 'navigation__mobile-menu_black'
+          }
+          onClick={handleNavMenuModal}
+        ></button>
+      )}
+
       <div className='navigation__button-container'>
         <Link to='/'>
           <button

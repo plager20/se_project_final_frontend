@@ -5,7 +5,12 @@ import UserContext from '../../context/UserContext';
 import './NavMenuModal.css';
 import logout from '../../assets/logout.svg';
 
-function NavMenuModal(activeModal) {
+function NavMenuModal({
+  activeModal,
+  closeActiveModal,
+  handleSignInModal,
+  handleLogOut,
+}) {
   const { currentUser, isLoggedIn } = useContext(UserContext);
 
   return (
@@ -16,27 +21,35 @@ function NavMenuModal(activeModal) {
     >
       <div className='navmenumodal__content'>
         <div className='navmenumodal__header'>
-          <Link to='/'>
+          <Link to='/' onClick={closeActiveModal}>
             <p className='navmenumodal__icon'>NewsExplorer</p>
           </Link>
-          <button className='navmenumodal__close-btn'></button>
+          <button
+            className='navmenumodal__close-btn'
+            onClick={closeActiveModal}
+          ></button>
         </div>
         <div className='navemenumodal__routes'>
-          <Link to='/'>
+          <Link to='/' onClick={closeActiveModal}>
             <p className='navmenumodal__home'>Home</p>
           </Link>
           {isLoggedIn && (
-            <Link to='/saved-news'>
+            <Link to='/saved-news' onClick={closeActiveModal}>
               <p className='navmenumodal__savednews'>Saved Articles</p>
             </Link>
           )}
         </div>
         <div className='navmenumodal__signin-signout-btn-container'>
           {!isLoggedIn && (
-            <button className='navmenumodal__signin'>Sign in</button>
+            <button
+              className='navmenumodal__signin'
+              onClick={handleSignInModal}
+            >
+              Sign in
+            </button>
           )}
           {isLoggedIn && (
-            <button className='navmenumodal__logout'>
+            <button className='navmenumodal__logout' onClick={handleLogOut}>
               {currentUser.name}
               <img
                 src={logout}

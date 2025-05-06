@@ -80,6 +80,8 @@
 }
 
 .navmenumodal__signin-signout-btn-container {
+  display: flex;
+  justify-content: center;
   padding: 0 16px 24px;
 }
 
@@ -101,6 +103,10 @@
 }
 
 .navmenumodal__logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   font-family: Roboto;
   font-weight: 500;
   font-size: 18px;
