@@ -41,7 +41,7 @@ function SavedNewsHeader({
         <p className='savedNewsHeader__saved'>Saved articles</p>
         <h2 className='savedNewsHeader__info'>
           {currentUser
-            ? `${currentUser.name}, you have ${savedArticles.length} saved articles`
+            ? `${currentUser.username}, you have ${savedArticles.length} saved articles`
             : 'Loading...'}
         </h2>
         <h3 className='savedNewsHeader__keywords'>

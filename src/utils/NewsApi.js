@@ -5,7 +5,7 @@ const BASE_URL =
 
 const apiKey = '020906194a3e429eb3cf16f7baa623e8';
 
-const request = (url, options) => {
+export const request = (url, options) => {
   return fetch(url, options).then(checkResponse);
 };
 

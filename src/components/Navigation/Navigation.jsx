@@ -70,7 +70,7 @@ function Navigation({
         )}
         {isLoggedIn && (
           <button className='navigation__signout' onClick={handleLogOut}>
-            {currentUser.name}
+            {currentUser.username}
             <img
               className='navigation__logout'
               src={isSavedNews ? logoutBlack : logout}

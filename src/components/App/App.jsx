@@ -9,11 +9,12 @@ import RegistrationConfirmationModal from '../RegistrationConfirmationModal/Regi
 import NavMenuModal from '../NavMenuModal/NavMenuModal';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
-import { register, login, checkToken } from '../../utils/auth';
+import { register, login, getUserInfo } from '../../utils/auth';
 import UserContext from '../../context/UserContext';
 import getNewsArticles from '../../utils/NewsApi';
 import { saveArticles, getArticles } from '../../utils/api';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import { getToken, setToken } from '../../utils/token';
 
 function App() {
   //useStates
@@ -48,41 +49,34 @@ function App() {
   };
 
   //Signup and Signin
-  const handleRegistration = ({ username, email, password }) => {
-    register(username, password, email)
+  const handleRegistration = (data) => {
+    console.log(data);
+    register(data)
       .then(() => {
         handleRegistrationConfirmationModal();
       })
       .catch(console.error);
   };
 
-  const handleLogIn = async (email, password, e) => {
-    try {
-      const response = await login(email, password);
-      if (response.token) {
-        localStorage.setItem('token', response.token);
-        handleCheckToken();
-      }
-    } catch (err) {
-      console.error(err);
+  const handleLogIn = ({ email, password }) => {
+    if (!email || !password) {
+      return;
     }
-  };
-
-  const handleCheckToken = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      if (!token) return;
-
-      const response = await checkToken(token);
-      if (response.data) {
+    login({ email, password })
+      .then((data) => {
+        if (!data.token) console.error('JWT Token not found');
+        setToken(data.token);
+        return getUserInfo(data.token);
+      })
+      .then((user) => {
+        setCurrentUser(user);
         setIsLoggedIn(true);
-        const { name, email, _id } = response.data;
-        setCurrentUser({ name, email, _id });
         fetchArticles();
-      }
-    } catch (err) {
-      console.error(err);
-    }
+        closeActiveModal();
+      })
+      .catch((err) => {
+        console.error('Error logging in: ', err);
+      });
   };
 
   //NewsApi
@@ -143,7 +137,21 @@ function App() {
 
   // useEffects
   useEffect(() => {
-    handleCheckToken();
+    const jwt = getToken();
+
+    if (jwt) {
+      getUserInfo(jwt)
+        .then((user) => {
+          setCurrentUser(user);
+
+          setIsLoggedIn(true);
+        })
+        .catch((err) => {
+          console.error('Invalid token: ', err);
+          removeToken();
+        });
+    } else {
+    }
   }, []);
 
   const handleLogOut = () => {
