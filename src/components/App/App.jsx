@@ -50,7 +50,6 @@ function App() {
 
   //Signup and Signin
   const handleRegistration = (data) => {
-    console.log(data);
     register(data)
       .then(() => {
         handleRegistrationConfirmationModal();

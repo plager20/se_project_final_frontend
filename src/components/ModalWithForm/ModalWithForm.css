@@ -79,6 +79,15 @@
   height: 28px;
 }
 
+.modal__input_error {
+  border: 1px solid red;
+}
+
+.modal__error-message {
+  color: red;
+  font-size: 0.75rem;
+}
+
 .modal__submit {
   width: 358px;
   height: 64px;
@@ -168,7 +177,7 @@
   }
 
   .modal__input {
-    margin: 0 0 14px;
+    margin: 0;
     height: 25px;
   }
 
